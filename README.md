@@ -6,7 +6,7 @@ Team member name - Email - Phone
 
 2. 
 
-3. 
+3. David Krause - davidlk0930@gmail.com - 512-457-1933
 
 4. Drew Williams - Williamsag2@hendrix.edu - 501-499-0344
 
@@ -17,9 +17,9 @@ Group Roles
 2. Client Interfacer
    - Assignee
 3. Unit Tester
-   - Assignee
+   - David Krause
 4. Integration Tester
-   - Assignee  
+   - David Krause  
 5. Beta Test Organizer
    - Assignee
 
@@ -32,7 +32,6 @@ Each member is responsible for their own work and meeting any given deadline. Ea
 - Need assistence on any portion of the project
 - Wanting to make a commit to the main branch of the project
 - Any other issues or concerns about the project.
-
 
 We will have meetings based on the necessity and difficulty of the problem. Our normal meeting time will be either Tuesday from 11:00am - 12:00pm or Thursday 11:00am - 12:00pm or 12:00pm - 1:00pm, based on availablity of that given week. Each member is expected to show up to all meetings on time. If a group member isn't available, they must message the group at somepoint before the time of the scheduled meeting.
 
@@ -80,7 +79,7 @@ If any member is deemed by the majority of the group as a hinderence, and no oth
 
 1. Drew Williams - After a brief discussion with my group, the role I have been assigned is the task manager. As the task manager, I will strive to maintain steady progress and ensure consistent communication between all members. I will pay close attention to the time, work, and effort going into the project by each member and work to support/assist in places that I deem unsatisfactory. But at the same time, I will strive to understand and provide grace to each member because I understand that people are busy and have other responsibilities outside of this class. That being said, if it does become a problem that starts affecting the rest of the group, I will do my best to resolve it within the group or resort to the proper cases listed above. I will also maintain a positive outlook and attitude throughout this project, because it is vital to get along with the people you work with.
 
-2. 
+2. David Krause - I will be managing the Unit Tests as well as being the Integration Tester. I will make sure that myself and my teammates are including unit tests for their code/logic to make sure we can identify a problem more efficiently if one were to arise. Being the Integration Tester, I will handle a lot of the Firebase backend as well as making sure that everyone understands how Firebase works in tandem with our front end and logic. My role in the app for the Conway Art Walk will mostly involve working with Firebase and making sure that integration between Flutter and Firebase is smooth. 
 
 3. 
 
@@ -90,9 +89,8 @@ Acceptance of the contract ** Please type your name below if you agree to the co
 
 1. Drew Williams
 
-2. 
+2. David Krause
 
 3. 
 
 4. 
-
