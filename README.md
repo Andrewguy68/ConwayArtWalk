@@ -78,7 +78,7 @@ If any member is deemed by the majority of the group as a hinderence, and no oth
 
 - Member Paragraph
 
-1. 
+1. Drew Williams - After a brief discussion with my group, the role I have been assigned is the task manager. As the task manager, I will strive to maintain steady progress and ensure consistent communication between all members. I will pay close attention to the time, work, and effort going into the project by each member and work to support/assist in places that I deem unsatisfactory. But at the same time, I will strive to understand and provide grace to each member because I understand that people are busy and have other responsibilities outside of this class. That being said, if it does become a problem that starts affecting the rest of the group, I will do my best to resolve it within the group or resort to the proper cases listed above. I will also maintain a positive outlook and attitude throughout this project, because it is vital to get along with the people you work with.
 
 2. 
 
