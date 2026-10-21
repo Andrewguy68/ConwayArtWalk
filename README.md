@@ -4,7 +4,7 @@ Team member name - Email - Phone
 
 1. 
 
-2. 
+2. Athena Ramsey - RamseyMC@hendrix.edu - 501-291-9855
 
 3. David Krause - davidlk0930@gmail.com - 512-457-1933
 
@@ -21,7 +21,7 @@ Group Roles
 4. Integration Tester
    - David Krause  
 5. Beta Test Organizer
-   - Assignee
+   - Athena Ramsey
 
 
 Each member has one or two specified roles. But, there will be some fluidity between the different roles. Most members will probably do tasks that fall under the responsablities of a roll that isn't their own. This is okay and prefered!
@@ -37,7 +37,7 @@ We will have meetings based on the necessity and difficulty of the problem. Our 
 
 If a deadline or problem is relatively small, or progress is going smoothly, the group can decide to opt out (unanimously) of the weekly meeting. If this is chosen, the communication through teams must increase somewhat to counteract the lack of meeting. If progress slips because of this case above, Drew Williams, the Task manager, must prove this with examples of behavior, and request the team reinstate the weekly meeting. Futhermore, if any additional meetings are required to make up for lack of progress, no matter if the group can't meet fully, each group member must meet in person with another group member to work on the project.
 
-- Proceedures
+- Procedures
 
 During general team meetings, each member will talk about the current progress and ideas they are working on. Each member must be detailed in their description of progress done and provide future steps they will take this week to ensure further progress.
 
@@ -81,7 +81,7 @@ If any member is deemed by the majority of the group as a hinderence, and no oth
 
 2. David Krause - I will be managing the Unit Tests as well as being the Integration Tester. I will make sure that myself and my teammates are including unit tests for their code/logic to make sure we can identify a problem more efficiently if one were to arise. Being the Integration Tester, I will handle a lot of the Firebase backend as well as making sure that everyone understands how Firebase works in tandem with our front end and logic. My role in the app for the Conway Art Walk will mostly involve working with Firebase and making sure that integration between Flutter and Firebase is smooth. 
 
-3. 
+3. Athena Ramsey - I will be responsible for overseeing the Beta Testing phase of the project and ensuring that beta testing is done in a timely manner. I will handle much of the internal logic throughout the project; organizing classes and methods and making sure that each component of the code interacts with the others as anticipated, and communicate to solve issues if it does not. I am also responsible for making sure that, should another team member require certain information to be accessible to them throughout the project, that I create methods to get them that information within a timely manner.
 
 4. 
 
@@ -91,6 +91,6 @@ Acceptance of the contract ** Please type your name below if you agree to the co
 
 2. David Krause
 
-3. 
+3. Athena Ramsey
 
 4. 
