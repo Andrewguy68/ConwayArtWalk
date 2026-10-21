@@ -2,7 +2,7 @@ Conway Art Walk Project!!!!
 
 Team member name - Email - Phone
 
-1. 
+1. Natalia Castaneda - CastanedaNN@hendrix.edu - 501-960-9875
 
 2. Athena Ramsey - RamseyMC@hendrix.edu - 501-291-9855
 
@@ -15,7 +15,7 @@ Group Roles
 1. Task Manager 
    - Drew Williams
 2. Client Interfacer
-   - Assignee
+   - Natalia Castaneda
 3. Unit Tester
    - David Krause
 4. Integration Tester
@@ -83,7 +83,7 @@ If any member is deemed by the majority of the group as a hinderence, and no oth
 
 3. Athena Ramsey - I will be responsible for overseeing the Beta Testing phase of the project and ensuring that beta testing is done in a timely manner. I will handle much of the internal logic throughout the project; organizing classes and methods and making sure that each component of the code interacts with the others as anticipated, and communicate to solve issues if it does not. I am also responsible for making sure that, should another team member require certain information to be accessible to them throughout the project, that I create methods to get them that information within a timely manner.
 
-4. 
+4. Natalia Castaneda - I will be responsible of being the client interfacer. I will manage all contact with our partner regarding our project app that is for them. I will reguarly be in contact with our partner and make sure to communicate back to my teammates and professor. I know my full responsibilites and I am aware that I need to be on top of communicating with our partner in a timely and professinal manner and to communicate back with my team and quickly as possibly to update them. I am also responsible for making sure that if another team member has a question to ask our partner that I should communicate with them quickly and have an answer for them soon. 
 
 Acceptance of the contract ** Please type your name below if you agree to the contract.
 
@@ -93,4 +93,4 @@ Acceptance of the contract ** Please type your name below if you agree to the co
 
 3. Athena Ramsey
 
-4. 
+4. Natalia Castaneda
