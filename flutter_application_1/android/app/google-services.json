@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "659992952996",
+    "project_id": "conwayartwalk",
+    "storage_bucket": "conwayartwalk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659992952996:android:ca6bb54bf5d784cbac2631",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT9Yr6LXaTmQLzCT_TcJ-BZ3tV5Xcn1oQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
