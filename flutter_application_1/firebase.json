@@ -1,1 +1,47 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"conwayartwalk","appId":"1:659992952996:android:ca6bb54bf5d784cbac2631","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"conwayartwalk","appId":"1:659992952996:ios:56f8f683c7a5afb7ac2631","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"conwayartwalk","appId":"1:659992952996:ios:56f8f683c7a5afb7ac2631","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"conwayartwalk","configurations":{"android":"1:659992952996:android:ca6bb54bf5d784cbac2631","ios":"1:659992952996:ios:56f8f683c7a5afb7ac2631","macos":"1:659992952996:ios:56f8f683c7a5afb7ac2631","web":"1:659992952996:web:a6f86ce92ca918b2ac2631","windows":"1:659992952996:web:321a9181b631c0a9ac2631"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "conwayartwalk",
+          "appId": "1:659992952996:android:ca6bb54bf5d784cbac2631",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "conwayartwalk",
+          "appId": "1:659992952996:ios:56f8f683c7a5afb7ac2631",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "conwayartwalk",
+          "appId": "1:659992952996:ios:56f8f683c7a5afb7ac2631",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "conwayartwalk",
+          "configurations": {
+            "android": "1:659992952996:android:ca6bb54bf5d784cbac2631",
+            "ios": "1:659992952996:ios:56f8f683c7a5afb7ac2631",
+            "macos": "1:659992952996:ios:56f8f683c7a5afb7ac2631",
+            "web": "1:659992952996:web:a6f86ce92ca918b2ac2631",
+            "windows": "1:659992952996:web:321a9181b631c0a9ac2631"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "nam5",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
