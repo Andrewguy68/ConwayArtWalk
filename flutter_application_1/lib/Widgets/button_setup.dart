@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Helpful class to create original buttons
 class NavStart {
   Widget buildNavButton(
     BuildContext context,
