@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Map_Page/map_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
+import 'package:flutter_application_1/Log_In/login_logic.dart';
+import 'package:flutter_application_1/Log_In/signup_page.dart';
 
 
 class MainMenu extends StatefulWidget {
@@ -27,6 +29,9 @@ class _MainMenuState extends State<MainMenu> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             NavStart().buildNavButton(context, 'Map', MapSetup()),
+            NavStart().buildNavButton(context, 'Login Page', Login()),
+            NavStart().buildNavButton(context, 'Signup Page', Signup()),
+
           ],
         ),
       ),
