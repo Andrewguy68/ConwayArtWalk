@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Event_List/event_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
+import 'package:flutter_application_1/About_Page/about_page.dart';
+import 'package:flutter_application_1/Stamp_Page/stamp_page.dart';
 
 class MapSetup extends StatefulWidget {
   const MapSetup({super.key});
@@ -26,6 +28,8 @@ class _MapSetupState extends State<MapSetup> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             NavStart().buildNavButton(context, 'Event List!', EventPage()),
+            NavStart().buildNavButton(context, 'About Page!', AboutPage()),
+            NavStart().buildNavButton(context, 'Stamps', StampPage()),
           ],
         ),
       ),
