@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Event_List/event_page.dart';
+import 'package:flutter_application_1/pages/event_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
-import 'package:flutter_application_1/About_Page/about_page.dart';
-import 'package:flutter_application_1/Stamp_Page/stamp_page.dart';
-import 'package:flutter_application_1/Start_Page/Main_menu.dart';
+import 'package:flutter_application_1/pages/about_page.dart';
+import 'package:flutter_application_1/pages/stamp_page.dart';
+import 'package:flutter_application_1/pages/Main_menu.dart';
 
 class MapSetup extends StatefulWidget {
   const MapSetup({super.key});

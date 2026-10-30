@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Map_Page/map_page.dart';
+import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
 
 class EventPage extends StatefulWidget {
