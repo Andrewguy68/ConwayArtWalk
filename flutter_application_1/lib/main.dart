@@ -12,10 +12,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {  //Builds the main app widget
+    //Fonts: Geronide Regular, Campground, Jimmy Script, Sanchez
+    //Colors: #1d1abc, #ee5033, #ffb809, #f8a9a4, #eae9e2, #000000, #627d4e, #63a6f2
+    final ColorScheme colorScheme = ColorScheme.fromSeed(
+      brightness: MediaQuery.platformBrightnessOf(context),
+      seedColor: Color(0xFF1d1abc),
+      primary: Color(0xFFee5033),
+      secondary: Color(0xFFffb809),
+      tertiary: Color(0xFF627d4e)
+    );
     return MaterialApp(
       title: 'Conway Art Walk!',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: colorScheme,
         useMaterial3: true,
       ),
       home: const MainMenu(),
