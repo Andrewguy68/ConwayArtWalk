@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_1/pages/Main_menu.dart';
-import 'firebase_options.dart';
 
 void main() {
   runApp(const MyApp());
