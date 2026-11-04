@@ -29,7 +29,7 @@ class _MainMenuState extends State<MainMenu> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('ArtWalkLogo-Dark.png', width: 400, height: 400),
+            Image.asset('assets/ArtWalkLogo-Dark.png', width: 400, height: 400),
             NavStart().buildNavButton(context, 'Map', MapSetup()),
             NavStart().buildNavButton(context, 'Login Page', Login()),
             NavStart().buildNavButton(context, 'Signup Page', Signup()),

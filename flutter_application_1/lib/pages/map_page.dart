@@ -14,29 +14,48 @@ class MapSetup extends StatefulWidget {
 }
 
 class _MapSetupState extends State<MapSetup> {
+  // Opens a popup containing the navigation buttons.
+  void _showMenu() {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Menu'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    //builds the main menu widget
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Art Walk Map!',
-          textAlign: TextAlign.center,
-        ),
+        title: const Text('Art Walk Map!', textAlign: TextAlign.center),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.menu),
+            tooltip: 'Menu',
+            onPressed: _showMenu,
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MapBuild().build(context),
-            NavStart().buildNavButton(context, 'Event List!', EventPage()),
-            NavStart().buildNavButton(context, 'About Page!', AboutPage()),
-            NavStart().buildNavButton(context, 'Stamps', StampPage()),
-            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu()),
-          ],
-        ),
-      ),
+      body: MapBuild().build(context),
     );
   }
 }
