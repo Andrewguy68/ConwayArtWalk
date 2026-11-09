@@ -22,10 +22,10 @@ class _AboutPageState extends State<AboutPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true),
             ],
           ),
@@ -44,7 +44,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stamps', textAlign: TextAlign.center),
+        title: const Text('About!', textAlign: TextAlign.center),
         centerTitle: true,
         actions: [
           IconButton(

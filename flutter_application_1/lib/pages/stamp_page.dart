@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
 import 'package:flutter_application_1/pages/event_page.dart';
 import 'package:flutter_application_1/pages/about_page.dart';
+import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/pages/Main_menu.dart';
 
 class StampPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _StampPageState extends State<StampPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),

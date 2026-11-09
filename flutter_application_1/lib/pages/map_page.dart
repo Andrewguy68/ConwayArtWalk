@@ -31,6 +31,7 @@ class _MapSetupState extends State<MapSetup> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
               NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),
