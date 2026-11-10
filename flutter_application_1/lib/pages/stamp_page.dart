@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/event_page.dart';
 import 'package:flutter_application_1/pages/about_page.dart';
 import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/pages/Main_menu.dart';
+import 'package:qr_code_dart_scan/qr_code_dart_scan.dart';
 
 class StampPage extends StatefulWidget {
   const StampPage({super.key});
@@ -13,6 +14,24 @@ class StampPage extends StatefulWidget {
 }
 
 class _StampPageState extends State<StampPage> {
+  String? _scanResult;
+  String? _cameraError;
+
+  void _handleCameraError(String error) {
+    if (!mounted || error == _cameraError) return;
+    setState(() {
+      _cameraError = error;
+    });
+  }
+
+  void _handleCapture(ScanResult result) {
+    if (!mounted || result.text.isEmpty || result.text == _scanResult) return;
+    setState(() {
+      _scanResult = result.text;
+      _cameraError = null;
+    });
+  }
+
   void _showMenu() {
     showDialog(
       context: context,
@@ -51,6 +70,45 @@ class _StampPageState extends State<StampPage> {
             icon: const Icon(Icons.menu),
             tooltip: 'Menu',
             onPressed: _showMenu,
+          ),
+        ],
+      ),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          QRCodeDartScanView(
+            onCameraError: _handleCameraError,
+            typeScan: TypeScan.live,
+            onCapture: _handleCapture,
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Card(
+                margin: const EdgeInsets.all(16),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _cameraError == null
+                            ? (_scanResult == null
+                                ? 'Find a QR code to scan'
+                                : 'QR code detected')
+                            : 'Camera error: $_cameraError',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      if (_scanResult != null) ...[
+                        const SizedBox(height: 8),
+                        SelectableText(_scanResult!),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
