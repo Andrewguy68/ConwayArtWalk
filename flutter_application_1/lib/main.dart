@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Main_menu.dart';
+import 'package:firebase_core/firebase_core.dart'; 
+import 'firebase_options.dart';
 
-void main() {
+// async so Firebase finishes starting before the app builds
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -15,9 +22,14 @@ class MyApp extends StatelessWidget {
     final ColorScheme colorScheme = ColorScheme.fromSeed(
       brightness: MediaQuery.platformBrightnessOf(context),
       seedColor: Color(0xFF1d1abc),
-      primary: Color(0xFFee5033),
+      primary: Color(0xFF63a6f2),
+      onPrimary: Color(0xFF1d1abc),
       secondary: Color(0xFFffb809),
-      tertiary: Color(0xFF627d4e)
+      onSecondary: Color(0xFF000000),
+      tertiary: Color(0xFFeae9a2),
+      onTertiary: Color(0xFF627d4e),
+      error: Color(0xFFf8a984),
+      onError: Color(0xFFee5033),
     );
     return MaterialApp(
       title: 'Conway Art Walk!',

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/color_scheme.dart';
 import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
 import 'package:flutter_application_1/Log_In/login_logic.dart';
@@ -29,9 +30,9 @@ class _MainMenuState extends State<MainMenu> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/ArtWalkLogo-Dark.png', width: 400, height: 400),
-            NavStart().buildNavButton(context, 'Map', MapSetup()),
-            NavStart().buildNavButton(context, 'Login Page', Login()),
-            NavStart().buildNavButton(context, 'Signup Page', Signup()),
+            NavStart().buildNavButton(context, 'Map', MapSetup(), colorScheme: Scheme.primary),
+            NavStart().buildNavButton(context, 'Login Page', Login(), colorScheme: Scheme.secondary),
+            NavStart().buildNavButton(context, 'Signup Page', Signup(), colorScheme: Scheme.tertiary),
 
           ],
         ),
