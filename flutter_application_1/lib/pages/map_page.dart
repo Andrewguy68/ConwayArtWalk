@@ -56,6 +56,22 @@ class _MapSetupState extends State<MapSetup> {
     );
   }
 
+  void _showSurvey() {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Survey'),
+        content: const Text("Survey placeholder"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +86,9 @@ class _MapSetupState extends State<MapSetup> {
           ),
         ],
       ),
-      // map shows first, then pins 
+      // map shows first, then pins
       body: FutureBuilder<List<Pin>>(
-        future: _pinsFuture, 
+        future: _pinsFuture,
         builder: (context, snapshot) {
           // errors
           if (snapshot.hasError) {
@@ -80,8 +96,14 @@ class _MapSetupState extends State<MapSetup> {
           }
           final pins = snapshot.data ?? const <Pin>[];
           return MapBuild().build(context, pins: pins);
-        }
-      )
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _showSurvey,
+        tooltip: 'Please take our survey!',
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: const Icon(Icons.question_answer),
+      ),
     );
   }
 }
