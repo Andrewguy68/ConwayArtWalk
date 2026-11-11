@@ -31,10 +31,28 @@ class MyApp extends StatelessWidget {
       error: Color(0xFFf8a984),
       onError: Color(0xFFee5033),
     );
+    final TextTheme textTheme = Theme.of(context).textTheme.copyWith(
+      headlineLarge: const TextStyle(
+        fontFamily: 'Sanchez',
+        fontSize: 48,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineMedium: const TextStyle(
+        fontFamily: 'Geronide',
+        fontSize: 36,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineSmall: const TextStyle(
+        fontFamily: 'CampgroundFreeDemo',
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+    );
     return MaterialApp(
       title: 'Conway Art Walk!',
       theme: ThemeData(
         colorScheme: colorScheme,
+        textTheme: textTheme,
         useMaterial3: true,
       ),
       home: const MainMenu(),

@@ -40,6 +40,9 @@ dependencies:
   flutter_map: ^7.0.0
   latlong2: ^0.9.0
   qr_code_dart_scan: 0.14.0
+  google_fonts: ^9.0.0
+  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,6 +72,19 @@ flutter:
   assets:
     - assets/ArtWalkLogo-Dark.png
     - assets/ArtWalkLogo-Light.png
+
+  fonts:
+    - family: CampgroundFreeDemo
+      fonts:
+        - asset: extra_fonts/CampgroundFreeDemo-regular.otf
+    - family: Geronide
+      fonts:
+        - asset: extra_fonts/Geronide Reg Demo.otf
+    - family: Sanchez
+      fonts:
+        - asset: extra_fonts/Sanchezregular.otf
+        - asset: extra_fonts/Sanchezregular-ita.otf
+          style: italic
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
