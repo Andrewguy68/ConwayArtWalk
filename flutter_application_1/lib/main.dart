@@ -45,7 +45,6 @@ class MyApp extends StatelessWidget {
       headlineSmall: const TextStyle(
         fontFamily: 'CampgroundFreeDemo',
         fontSize: 24,
-        fontWeight: FontWeight.bold,
       ),
     );
     return MaterialApp(

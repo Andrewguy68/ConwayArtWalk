@@ -1,4 +1,3 @@
-
 enum Scheme {
   primary,
   secondary,

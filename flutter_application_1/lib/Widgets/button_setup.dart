@@ -13,10 +13,13 @@ class NavStart {
       return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.tertiary),
+          foregroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onTertiary),
+        ),
         onPressed: () {
           // grab the navigator before the pop up closes
           final navigator = Navigator.of(context);
-          Theme.of(context).colorScheme.tertiary;
           if (closePopupFirst) navigator.pop();
           navigator.pushReplacement(
             MaterialPageRoute(builder: (context) => destination),
@@ -30,10 +33,13 @@ class NavStart {
       return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.secondary),
+          foregroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onSecondary),
+        ),
         onPressed: () {
           // grab the navigator before the pop up closes
           final navigator = Navigator.of(context);
-          Theme.of(context).colorScheme.secondary;
           if (closePopupFirst) navigator.pop();
           navigator.pushReplacement(
             MaterialPageRoute(builder: (context) => destination),
@@ -48,10 +54,13 @@ class NavStart {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary),
+            foregroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onPrimary),
+          ),
           onPressed: () {
             // grab the navigator before the pop up closes
             final navigator = Navigator.of(context);
-            Theme.of(context).colorScheme.primary;
             if (closePopupFirst) navigator.pop();
             navigator.pushReplacement(
               MaterialPageRoute(builder: (context) => destination),
