@@ -103,5 +103,10 @@ void main() {
       expect(copy.showAtZoom, original.showAtZoom);
       expect(copy.hideAtZoom, original.hideAtZoom);
     });
+        test('writes zoom fields when they are set', () {
+      final map = pinWith(showAtZoom: 16, hideAtZoom: 18).toMap();
+      expect(map['showAtZoom'], 16.0);
+      expect(map['hideAtZoom'], 18.0);
+    });
   });
 }

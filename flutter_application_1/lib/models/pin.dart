@@ -102,6 +102,10 @@ class Pin {
       // want to convert dart to firebase
       if (startTime != null) 'startTime': Timestamp.fromDate(startTime!),
       if (endTime != null) 'endTime': Timestamp.fromDate(endTime!),
+
+      // zoom range, only written when it's set
+      if (showAtZoom != null) 'showAtZoom': showAtZoom,
+      if (hideAtZoom != null) 'hideAtZoom': hideAtZoom,
     };
   }
 }
