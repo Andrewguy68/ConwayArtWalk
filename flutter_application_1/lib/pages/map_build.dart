@@ -17,7 +17,7 @@ const double kMinZoom = 17;
 const double kMaxZoom = 20;
 
 final LatLngBounds kMapBounds = LatLngBounds(
-  // SW and NE corner
+  // SW and NE cornerz4tyo4.f.e1
   LatLng(35.0885, -92.4420),
   LatLng(35.0930, -92.4385),
 );
