@@ -28,6 +28,14 @@ class _MapSetupState extends State<MapSetup> {
   // late final means it reads once
   late final Future<List<Pin>>_pinsFuture = FirestoreService().getPins();
 
+  @override
+  void initState() { //https://api.flutter.dev/flutter/scheduler/SchedulerBinding/addPostFrameCallback.html 
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _showSurvey();
+    });
+  }
+
   // Opens a popup containing the navigation buttons.
   void _showMenu() {
     showDialog(
