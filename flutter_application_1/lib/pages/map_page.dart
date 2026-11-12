@@ -22,6 +22,14 @@ class _MapSetupState extends State<MapSetup> {
   // which pin types are showing
   final Set<String> _visibleTypes = {...kAllPinTypes};
 
+  @override
+  void initState() { //https://api.flutter.dev/flutter/scheduler/SchedulerBinding/addPostFrameCallback.html 
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _showSurvey();
+    });
+  }
+
   // Opens a popup containing the navigation buttons.
   void _showMenu() {
     showDialog(
