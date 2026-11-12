@@ -24,6 +24,12 @@ class Pin {
   final DateTime? startTime; 
   final DateTime? endTime;
 
+  // leave both empty and the pin shows at every zoom level
+  // showAtZoom: pin appears once the map zoom reaches this number
+  // hideAtZoom: pin disappears same way
+  final double? showAtZoom;
+  final double? hideAtZoom;
+
   const Pin({
     // the req parts on the pin
     required this.id,
@@ -33,11 +39,15 @@ class Pin {
     required this.lat,
     required this.long,
 
-    // non req bc not all are booths or music
+    // not req bc not all are booths or music
     this.boothNum,
     // this.vendorId
     this.startTime,
     this.endTime,
+
+    // not req
+    this.showAtZoom,
+    this.hideAtZoom,
   });
 
   // https://dart.dev/language/constructors#factory-constructors
@@ -46,20 +56,36 @@ class Pin {
   factory Pin.fromMap(String id, Map<String, dynamic> data) {
     return Pin(
       id: id,
+
       // type is defaulted to 'booth' if it doesn't have one
       type: data['type'] as String? ?? 'booth',
+
       // these two fallback into empty strings
       title: data['title'] as String? ?? '',
       description: data['description'] as String? ?? '',
+
       // no fallback bc we need a location for the pin
       lat: (data['lat'] as num).toDouble(),
       long: (data['long'] as num).toDouble(),
+
       boothNum: data['boothNum'] as String?,
+
       // vendorId: data['vendorId'] as String?,
       // firestore timestamp into Dart date
       startTime: (data['startTime'] as Timestamp?)?.toDate(),
       endTime: (data['endTime'] as Timestamp?)?.toDate(),
+
+      // firestore numbers can come back as int or double so cast
+      showAtZoom: (data['showAtZoom'] as num?)?.toDouble(),
+      hideAtZoom: (data['hideAtZoom'] as num?)?.toDouble(),
     );
+  }
+
+  // should we be showing this pin?
+  bool isVisibleAt(double zoom) {
+    if (showAtZoom != null && zoom < showAtZoom!) return false;
+    if (hideAtZoom != null && zoom >= hideAtZoom!) return false;
+    return true;
   }
 
   // converts a pin to a map 
