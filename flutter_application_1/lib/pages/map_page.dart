@@ -16,17 +16,11 @@ class MapSetup extends StatefulWidget {
 }
 
 class _MapSetupState extends State<MapSetup> {
-  /*
-  // example pins for testing
-  final List<Pin> _testPins = const [
-     Pin(id: 't1', type: 'booth', title: 'Test Booth', description: 'Sample', lat: 35.0910, long: -92.4395, boothNum: '12'),
-     Pin(id: 't2', type: 'music', title: 'Test Stage', description: 'Sample', lat: 35.0880, long: -92.4440),
-     Pin(id: 't3', type: 'accessibility', title: 'Test Access Point', description: 'Sample', lat: 35.0925, long: -92.4425),
-   ];
-   */
   // pins will now come from firestore and they will replace the hardcoded ones
   // late final means it reads once
   late final Future<List<Pin>>_pinsFuture = FirestoreService().getPins();
+  // which pin types are showing
+  final Set<String> _visibleTypes = {...kAllPinTypes};
 
   @override
   void initState() { //https://api.flutter.dev/flutter/scheduler/SchedulerBinding/addPostFrameCallback.html 
@@ -80,6 +74,34 @@ class _MapSetupState extends State<MapSetup> {
     );
   }
 
+  // row of widgets to adjust visibility
+  Widget _filterBar() {
+    const labels = {
+      'booth': 'Booths',
+      'music': 'Music',
+      'accessibility': 'Accessibility',
+    };
+    return Wrap(
+      spacing: 8,
+      children: [
+        for (final entry in labels.entries)
+          FilterChip(
+            label: Text(entry.value),
+            selected: _visibleTypes.contains(entry.key),
+            onSelected: (isOn) {
+              setState(() {
+                if (isOn) {
+                  _visibleTypes.add(entry.key);
+                } else {
+                  _visibleTypes.remove(entry.key);
+                }
+              });
+            },
+          ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +125,13 @@ class _MapSetupState extends State<MapSetup> {
             debugPrint('Could not load pins: ${snapshot.error}');
           }
           final pins = snapshot.data ?? const <Pin>[];
-          return MapBuild().build(context, pins: pins);
+          return Stack(
+            fit: StackFit.expand,
+            children: [
+              MapBuild().build(context, pins: pins, visibleTypes: _visibleTypes),
+              Positioned(top: 8, left: 8, right: 8, child: _filterBar()),
+            ],
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
