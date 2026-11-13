@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/color_scheme.dart';
 import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
 import 'package:flutter_application_1/pages/about_page.dart';
@@ -23,11 +22,11 @@ class _EventPageState extends State<EventPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true, colorScheme: Scheme.primary),
-              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
-              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true, colorScheme: Scheme.tertiary),
-              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
-              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true, colorScheme: Scheme.tertiary),
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true),
             ],
           ),
         ),
@@ -55,6 +54,43 @@ class _EventPageState extends State<EventPage> {
           ),
         ],
       ),
+      body: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF1d1abc),
+              Color(0xFF63a6f2),
+            ],
+          ),
+        ),
+        child: DefaultTextStyle(
+          style: const TextStyle(fontFamily: 'Sanchez', fontSize: 16, color: Colors.white),
+          child: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(child: Image.asset('assets/images/Conway_Art_Walk_Logo.png', width: 200, height: 200)),
+                  Center(
+                    child: Text(
+                      'Schedule of Events',
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        fontSize: 28,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.white,
+                      ),
+                    )
+                  )
+                ]
+              )
+            )
+          )
+        )
+      )
     );
   }
 }
