@@ -147,6 +147,12 @@ class _EventPageState extends State<EventPage> {
                   _venue('Kris Allen Stage'),
                   _event('The Stompin\' Crows', time: '5:00 - 6:15'),
                   _event('La\'Chaz Holloway', time: '6:30 - 8:00'),
+
+
+                  _section('Conductor', const Color(0xFF63a6f2), textColor: Colors.black),
+                  _venue('Arnold Innovations Center'),
+                  _event('Exhibiting Artists\' Booths'),
+                  _event('Cardboard Gingerbread Houses'),
                 ],
               ),
             ),
