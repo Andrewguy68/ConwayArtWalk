@@ -37,7 +37,7 @@ class _StampPageState extends State<StampPage> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Menu'),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -53,7 +53,7 @@ class _StampPageState extends State<StampPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Close'),
+            child: Text('Close', style: Theme.of(context).textTheme.bodyLarge),
           ),
         ],
       ),
@@ -64,7 +64,7 @@ class _StampPageState extends State<StampPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stamps', textAlign: TextAlign.center),
+        title: Text('Stamps', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineLarge),
         centerTitle: true,
         actions: [
           IconButton(

@@ -37,7 +37,7 @@ class _MapSetupState extends State<MapSetup> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Menu'),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -53,7 +53,7 @@ class _MapSetupState extends State<MapSetup> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Close'),
+            child: Text('Close', style: Theme.of(context).textTheme.bodyLarge,),
           ),
         ],
       ),
@@ -64,8 +64,11 @@ class _MapSetupState extends State<MapSetup> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Please take our survey!'),
-        content: const Text('We would like to hear your feedback about the art walk!'),
+        title: Text(
+          'Please take our survey!',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        content: Text('We would like to hear your feedback about the art walk!', style: Theme.of(context).textTheme.bodyLarge,),
         actions: [
           TextButton(
             onPressed: () async {
@@ -74,11 +77,11 @@ class _MapSetupState extends State<MapSetup> {
                 Uri.parse('https://form.jotform.com/260534978822063'),
               );
             },
-            child: const Text('Take Survey!'),
+            child: Text('Take Survey!', style: Theme.of(context).textTheme.bodyLarge,),
           ),
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Close'),
+            child: Text('Close', style: Theme.of(context).textTheme.bodyLarge,),
           ),
           
         ],
@@ -98,7 +101,7 @@ class _MapSetupState extends State<MapSetup> {
       children: [
         for (final entry in labels.entries)
           FilterChip(
-            label: Text(entry.value),
+            label: Text(entry.value, style: Theme.of(context).textTheme.bodyLarge),
             selected: _visibleTypes.contains(entry.key),
             onSelected: (isOn) {
               setState(() {
@@ -118,7 +121,7 @@ class _MapSetupState extends State<MapSetup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Art Walk Map!', textAlign: TextAlign.center),
+        title: Text('Art Walk Map!', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineLarge),
         centerTitle: true,
         actions: [
           IconButton(

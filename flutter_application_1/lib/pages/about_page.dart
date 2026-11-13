@@ -18,7 +18,7 @@ class _AboutPageState extends State<AboutPage> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Menu'),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -34,7 +34,7 @@ class _AboutPageState extends State<AboutPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Close'),
+            child: Text('Close', style: Theme.of(context).textTheme.bodyLarge),
           ),
         ],
       ),
@@ -45,7 +45,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About!', textAlign: TextAlign.center),
+        title: Text('About!', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineLarge),
         centerTitle: true,
         actions: [
           IconButton(
