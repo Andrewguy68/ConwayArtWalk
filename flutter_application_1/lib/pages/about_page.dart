@@ -78,7 +78,7 @@ class _AboutPageState extends State<AboutPage> {
                   Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160)),
                   Center(
                     child: Text(
-                      'About the Conway Art Walk!', style: Theme.of(context).textTheme.headlineMedium,
+                      'About the Conway Art Walk!', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,
                     ),
                   ),
                 ],
