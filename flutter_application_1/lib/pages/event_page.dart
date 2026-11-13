@@ -74,7 +74,7 @@ class _EventPageState extends State<EventPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(child: Image.asset('assets/images/Conway_Art_Walk_Logo.png', width: 200, height: 200)),
+                  Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160 )),
                   Center(
                     child: Text(
                       'Schedule of Events',
