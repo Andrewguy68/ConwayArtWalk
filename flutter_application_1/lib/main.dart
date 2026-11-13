@@ -34,12 +34,12 @@ class MyApp extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme.copyWith(
       headlineLarge: const TextStyle(
         fontFamily: 'Sanchez',
-        fontSize: 48,
+        fontSize: 38,
         fontWeight: FontWeight.bold,
       ),
       headlineMedium: const TextStyle(
         fontFamily: 'Geronide',
-        fontSize: 36,
+        fontSize: 28,
         fontWeight: FontWeight.bold,
       ),
       headlineSmall: const TextStyle(
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       ),
       bodyLarge: const TextStyle(
         fontFamily: 'Geronide',
-        fontSize: 22,
+        fontSize: 18,
       ),
     );
     return MaterialApp(

@@ -26,7 +26,7 @@ class NavStart {
           );
         },
         key: Key(label),
-        child: Text(label),
+        child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
       ),
     );
     }else if (colorScheme == Scheme.secondary){
