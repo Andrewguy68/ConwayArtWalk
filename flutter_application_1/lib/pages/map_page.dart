@@ -7,6 +7,7 @@ import 'package:flutter_application_1/pages/Main_menu.dart';
 import 'package:flutter_application_1/pages/map_build.dart';
 import 'package:flutter_application_1/models/pin.dart';
 import 'package:flutter_application_1/firestore_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MapSetup extends StatefulWidget {
   const MapSetup({super.key});
@@ -62,13 +63,23 @@ class _MapSetupState extends State<MapSetup> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Survey'),
-        content: const Text("Survey placeholder"),
+        title: const Text('Please take our survey!'),
+        content: const Text('We would like to hear your feedback about the art walk!'),
         actions: [
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(dialogContext);
+              await launchUrl(
+                Uri.parse('https://form.jotform.com/260534978822063'),
+              );
+            },
+            child: const Text('Take Survey!'),
+          ),
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
             child: const Text('Close'),
           ),
+          
         ],
       ),
     );
