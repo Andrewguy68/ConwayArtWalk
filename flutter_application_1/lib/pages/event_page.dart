@@ -40,6 +40,63 @@ class _EventPageState extends State<EventPage> {
     );
   }
 
+  Widget _section(String name, Color color, {Color textColor = Colors.white}) {
+    return Container(
+      margin: const EdgeInsets.only(top: 24, bottom: 4),
+      padding: const EdgeInsets.fromLTRB(24, 10, 28, 10),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.horizontal(right: Radius.circular(28)),
+      ),
+      child: Text(
+        name.toUpperCase(),
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          fontSize: 20,
+          fontWeight: FontWeight.normal,
+          color: textColor,
+        ), 
+        ),
+    );
+  }
+
+  Widget _venue(String name) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 2),
+      child: Text(
+        name,
+        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+          fontSize: 28,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  Widget _event(String title, {String? time}) {
+    final parts = title.split('*');
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(32, 4, 24, 4),
+      child: Text.rich(
+        TextSpan(
+          children: [
+            const TextSpan(text: '• '),
+            if (time != null)
+              TextSpan(
+                text: '$time  ',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            for (var i = 0; i < parts.length; i++)
+              TextSpan(
+                text: parts[i],
+                style: i.isOdd ? const TextStyle(fontStyle: FontStyle.italic) : null,
+              )
+
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,14 +140,19 @@ class _EventPageState extends State<EventPage> {
                         fontWeight: FontWeight.normal,
                         color: Colors.white,
                       ),
-                    )
-                  )
-                ]
-              )
-            )
-          )
-        )
-      )
+                    ),
+                  ),
+
+                  _section('Simon Park', const Color(0xFF627d4e)),
+                  _venue('Kris Allen Stage'),
+                  _event('The Stompin\' Crows', time: '5:00 - 6:15'),
+                  _event('La\'Chaz Holloway', time: '6:30 - 8:00'),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
