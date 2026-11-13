@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/color_scheme.dart';
 import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
 import 'package:flutter_application_1/pages/about_page.dart';
@@ -22,11 +23,11 @@ class _EventPageState extends State<EventPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true, colorScheme: Scheme.primary),
+              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
+              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true, colorScheme: Scheme.tertiary),
+              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
+              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true, colorScheme: Scheme.tertiary),
             ],
           ),
         ),
