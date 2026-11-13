@@ -50,6 +50,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Geronide',
         fontSize: 18,
       ),
+      bodyMedium: const TextStyle(
+        fontFamily: 'Sanchez',
+        fontSize: 16,
+      ),
     );
     return MaterialApp(
       title: 'Conway Art Walk!',

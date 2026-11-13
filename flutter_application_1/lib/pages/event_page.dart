@@ -17,7 +17,7 @@ class _EventPageState extends State<EventPage> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -67,29 +67,24 @@ class _EventPageState extends State<EventPage> {
           ),
         ),
         child: DefaultTextStyle(
-          style: const TextStyle(fontFamily: 'Sanchez', fontSize: 16, color: Colors.white),
+          style: Theme.of(context).textTheme.headlineMedium ?? const TextStyle(),
           child: SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(bottom: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160 )),
+                  Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160)),
                   Center(
                     child: Text(
-                      'Schedule of Events',
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        fontSize: 28,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.white,
-                      ),
-                    )
-                  )
-                ]
-              )
-            )
-          )
-        )
+                      'Schedule of Events', style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       )
     );
   }

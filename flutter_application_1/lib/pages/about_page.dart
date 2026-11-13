@@ -18,7 +18,7 @@ class _AboutPageState extends State<AboutPage> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -54,6 +54,38 @@ class _AboutPageState extends State<AboutPage> {
             onPressed: _showMenu,
           ),
         ],
+      ),
+      body: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF1d1abc),
+              Color(0xFF63a6f2),
+            ],
+          ),
+        ),
+        child: DefaultTextStyle(
+          style: Theme.of(context).textTheme.headlineMedium ?? const TextStyle(),
+          child: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160)),
+                  Center(
+                    child: Text(
+                      'About us!SSS', style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

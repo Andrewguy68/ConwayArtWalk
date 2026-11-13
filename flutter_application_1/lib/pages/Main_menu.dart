@@ -22,6 +22,7 @@ class _MainMenuState extends State<MainMenu> {
         title: Text(
           'Main Menu!',
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         centerTitle: true,
       ),
