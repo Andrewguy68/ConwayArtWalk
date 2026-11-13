@@ -46,6 +46,10 @@ class MyApp extends StatelessWidget {
         fontFamily: 'CampgroundFreeDemo',
         fontSize: 24,
       ),
+      bodyLarge: const TextStyle(
+        fontFamily: 'Geronide',
+        fontSize: 22,
+      ),
     );
     return MaterialApp(
       title: 'Conway Art Walk!',

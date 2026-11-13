@@ -18,7 +18,7 @@ class _EventPageState extends State<EventPage> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Menu'),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -45,7 +45,7 @@ class _EventPageState extends State<EventPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Events!', textAlign: TextAlign.center),
+        title: Text('Events!', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineLarge),
         centerTitle: true,
         actions: [
           IconButton(
