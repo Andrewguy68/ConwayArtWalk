@@ -4,6 +4,7 @@ import 'package:flutter_application_1/Widgets/button_setup.dart';
 import 'package:flutter_application_1/pages/about_page.dart';
 import 'package:flutter_application_1/pages/Main_menu.dart';
 import 'package:flutter_application_1/pages/stamp_page.dart';
+import 'package:flutter_application_1/models/color_scheme.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({super.key});
@@ -17,16 +18,16 @@ class _EventPageState extends State<EventPage> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true),
-              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true),
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true, colorScheme: Scheme.primary),
+              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
+              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true, colorScheme: Scheme.tertiary),
+              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
+              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true, colorScheme: Scheme.tertiary),
             ],
           ),
         ),
@@ -124,14 +125,14 @@ class _EventPageState extends State<EventPage> {
           ),
         ),
         child: DefaultTextStyle(
-          style: const TextStyle(fontFamily: 'Sanchez', fontSize: 16, color: Colors.white),
+          style: Theme.of(context).textTheme.headlineMedium ?? const TextStyle(),
           child: SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(bottom: 32),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160 )),
+                  Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160)),
                   Center(
                     child: Text(
                       'Schedule of Events',

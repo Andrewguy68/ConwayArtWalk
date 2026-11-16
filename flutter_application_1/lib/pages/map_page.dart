@@ -37,7 +37,7 @@ class _MapSetupState extends State<MapSetup> {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Menu', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

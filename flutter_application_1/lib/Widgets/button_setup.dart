@@ -9,13 +9,37 @@ class NavStart {
     Widget destination, {
     bool closePopupFirst = false,
     Scheme colorScheme = Scheme.primary,}){
+    Brightness mode = MediaQuery.platformBrightnessOf(context);
+    WidgetStatePropertyAll<Color> primary;
+    WidgetStatePropertyAll<Color> secondary;
+    WidgetStatePropertyAll<Color> tertiary;
+    WidgetStatePropertyAll<Color> onPrimary;
+    WidgetStatePropertyAll<Color> onSecondary;
+    WidgetStatePropertyAll<Color> onTertiary;
+    
+    if (mode == Brightness.light){
+      primary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary);
+      secondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.secondary);
+      tertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.tertiary);
+      onPrimary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onPrimary);
+      onSecondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onSecondary);
+      onTertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onTertiary);
+    }else{
+      primary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onPrimary);
+      secondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onSecondary);
+      tertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onTertiary);
+      onPrimary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary);
+      onSecondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.secondary);
+      onTertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.tertiary);
+    };
+
     if (colorScheme == Scheme.tertiary){
       return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.tertiary),
-          foregroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onTertiary),
+          backgroundColor: tertiary,
+          foregroundColor: onTertiary,
         ),
         onPressed: () {
           // grab the navigator before the pop up closes
@@ -34,8 +58,8 @@ class NavStart {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.secondary),
-          foregroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onSecondary),
+          backgroundColor: secondary,
+          foregroundColor: onSecondary,
         ),
         onPressed: () {
           // grab the navigator before the pop up closes
@@ -51,12 +75,14 @@ class NavStart {
     );
     }else{
       // Builds a navigation button widget which creates all of the needed elevated buttons for this code.
+      var style = Theme.of(context).textTheme.bodyLarge;
+      //WidgetStatePropertyAll<TextStyle>(TextStyle(color: Theme.of(context).colorScheme.onPrimary));
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary),
-            foregroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onPrimary),
+            backgroundColor: primary,
+            foregroundColor: onPrimary,
           ),
           onPressed: () {
             // grab the navigator before the pop up closes
@@ -67,7 +93,7 @@ class NavStart {
             );
           },
           key: Key(label),
-          child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+          child: Text(label, style: style),
         ),
       );
     }
