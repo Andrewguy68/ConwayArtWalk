@@ -30,7 +30,7 @@ class _SignupState extends State<Signup> {
             NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.secondary),
           ],
         ),
-      ),
+      )
     );
   }
 }
