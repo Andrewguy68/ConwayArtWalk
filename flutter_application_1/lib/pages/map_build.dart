@@ -38,6 +38,7 @@ class MapBuild {
     BuildContext context, {
     List<Pin> pins = const [],
     Set<String> visibleTypes = kAllPinTypes,
+    void Function (Pin pin)? onPinTap,
   }) {
     return FlutterMap(
       options: MapOptions(
@@ -54,7 +55,7 @@ class MapBuild {
         ),
         // layers draw in order, so the pins/markers will be drawn on top of the tiles
         // pinLayer decides which pins show at the current zoom
-        _PinLayer(pins: pins, visibleTypes: visibleTypes),
+        _PinLayer(pins: pins, visibleTypes: visibleTypes, onPinTap: onPinTap,),
         RichAttributionWidget(
           attributions: [
             TextSourceAttribution('OpenStreetMap contributors'),
@@ -69,8 +70,13 @@ class MapBuild {
 class _PinLayer extends StatelessWidget {
   final List<Pin> pins;
   final Set<String> visibleTypes;
+  final void Function(Pin pin)? onPinTap;
 
-  const _PinLayer({required this.pins, required this.visibleTypes});
+  const _PinLayer({
+    required this.pins,
+    required this.visibleTypes,
+    this.onPinTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,25 +90,33 @@ class _PinLayer extends StatelessWidget {
     );
 
     return MarkerLayer(
-      markers: shown.map((pin) => _markerFor(pin, zoom)).toList(),
+      markers: shown.map((pin) => _markerFor(pin, zoom, onPinTap)).toList(),
     );
   }
 }
 
 // turns one of our pins into a marker on the map
-Marker _markerFor(Pin pin, double zoom) {
+Marker _markerFor(Pin pin, double zoom, void Function(Pin pin)? onTap) {
   final size = _pinSizeAt(zoom);
   return Marker(
     point: LatLng(pin.lat, pin.long),
-    width: size,
-    height: size,
+    width: kPinSizeZoomedOut,
+    height: kPinSizeZoomedOut,
     // the tip of the pin is on the coords
     alignment: Alignment.topCenter,
-    child: Icon(
-      Icons.location_pin,
-      size: size,
-      color: _colorFor(pin.type),
-    ),
+    child: GestureDetector(
+      // opaque allows for the whole box to be tapped
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap == null ? null : () => onTap(pin),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Icon(
+          Icons.location_pin,
+          size: size,
+          color: _colorFor(pin.type),
+        ),
+      ),
+    )
   );
 }
 

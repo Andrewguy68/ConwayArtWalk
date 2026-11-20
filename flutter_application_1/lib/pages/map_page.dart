@@ -89,6 +89,58 @@ class _MapSetupState extends State<MapSetup> {
     );
   }
 
+// short label for the type shown in the details
+String _typeLabel(String type) {
+  switch (type) {
+    case 'music':
+      return 'Live music';
+    case 'accessibility':
+      return 'Accessibility';
+    default:
+      return 'Art booth';
+  }
+}
+
+// 9:30 AM style time from a DateTime
+String _formatTime(DateTime time) {
+  return TimeOfDay.fromDateTime(time).format(context);
+}
+
+// pops up the details when a pin is tapped
+void _showPinDetails(Pin pin) {
+  final textTheme = Theme.of(context).textTheme;
+  showModalBottomSheet(
+    context: context,
+    builder: (sheetContext) => SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(pin.title, style: textTheme.headlineMedium),
+            const SizedBox(height: 4),
+            Text(
+              _typeLabel(pin.type),
+              style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 12),
+            if (pin.description.isNotEmpty)
+              Text(pin.description, style: textTheme.bodyLarge),
+            if (pin.boothNum != null)
+              Text('Booth ${pin.boothNum}', style: textTheme.bodyLarge),
+            if (pin.startTime != null && pin.endTime != null)
+              Text(
+                '${_formatTime(pin.startTime!)} - ${_formatTime(pin.endTime!)}',
+                style: textTheme.bodyLarge,
+              ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
   // row of widgets to adjust visibility
   Widget _filterBar() {
     const labels = {
@@ -143,7 +195,8 @@ class _MapSetupState extends State<MapSetup> {
           return Stack(
             fit: StackFit.expand,
             children: [
-              MapBuild().build(context, pins: pins, visibleTypes: _visibleTypes),
+              // add to show the details too
+              MapBuild().build(context, pins: pins, visibleTypes: _visibleTypes, onPinTap: _showPinDetails),
               Positioned(top: 8, left: 8, right: 8, child: _filterBar()),
             ],
           );
