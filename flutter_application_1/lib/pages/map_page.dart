@@ -146,7 +146,7 @@ void _showPinDetails(Pin pin) {
     const labels = {
       'booth': 'Booths',
       'music': 'Music',
-      'accessibility': 'Accessibility',
+      // 'accessibility': 'Accessibility',
     };
     return Wrap(
       spacing: 8,
