@@ -27,6 +27,18 @@ class _SignupState extends State<Signup> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            TextFormField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Email',
+              ),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+              ),
+            ),
             NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.tertiary),
           ],
         ),
