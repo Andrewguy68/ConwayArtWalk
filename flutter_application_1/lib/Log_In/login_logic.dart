@@ -27,7 +27,19 @@ class _LoginState extends State<Login> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.tertiary),
+            TextFormField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Email',
+              ),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+              ),
+            ),
+            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), Icons.abc, colorScheme: Scheme.tertiary),
           ],
         ),
       ),

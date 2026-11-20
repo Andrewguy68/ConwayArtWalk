@@ -6,7 +6,8 @@ class NavStart {
   Widget buildNavButton(
     BuildContext context,
     String label,
-    Widget destination, {
+    Widget destination, 
+    IconData icon, {
     bool closePopupFirst = false,
     Scheme colorScheme = Scheme.primary,}){
     Brightness mode = MediaQuery.platformBrightnessOf(context);
@@ -50,7 +51,12 @@ class NavStart {
           );
         },
         key: Key(label),
-        child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+        child: Row(
+          children: [
+            Icon(icon),
+            Text(label, style: Theme.of(context).textTheme.bodyLarge)
+          ],
+        ),
       ),
     );
     }else if (colorScheme == Scheme.secondary){
