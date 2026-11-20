@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/color_scheme.dart';
 import 'package:flutter_application_1/pages/main_menu.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
 
@@ -18,6 +19,7 @@ class _LoginState extends State<Login> {
         title: Text(
           'Login!',
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineLarge
         ),
         centerTitle: true,
       ),
@@ -25,7 +27,7 @@ class _LoginState extends State<Login> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu()),
+            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.tertiary),
           ],
         ),
       ),

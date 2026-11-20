@@ -27,7 +27,7 @@ class _SignupState extends State<Signup> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.secondary),
+            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.tertiary),
           ],
         ),
       )
