@@ -39,7 +39,7 @@ class _SignupState extends State<Signup> {
                 labelText: 'Password',
               ),
             ),
-            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), colorScheme: Scheme.tertiary),
+            NavStart().buildNavButton(context, 'Back to Menu!', MainMenu(), Icons.abc, colorScheme: Scheme.tertiary),
           ],
         ),
       )

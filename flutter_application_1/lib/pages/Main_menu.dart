@@ -31,9 +31,9 @@ class _MainMenuState extends State<MainMenu> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/ArtWalkLogo-Dark.png', width: 400, height: 400),
-            NavStart().buildNavButton(context, 'Map', MapSetup(), colorScheme: Scheme.primary),
-            NavStart().buildNavButton(context, 'Login Page', Login(), colorScheme: Scheme.secondary),
-            NavStart().buildNavButton(context, 'Signup Page', Signup(), colorScheme: Scheme.tertiary),
+            NavStart().buildNavButton(context, 'Map', MapSetup(),Icons.map_outlined, colorScheme: Scheme.primary),
+            NavStart().buildNavButton(context, 'Login Page', Login(), Icons.account_circle, colorScheme: Scheme.secondary),
+            NavStart().buildNavButton(context, 'Signup Page', Signup(), Icons.account_circle, colorScheme: Scheme.tertiary),
 
           ],
         ),
