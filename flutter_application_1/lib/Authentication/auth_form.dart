@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Authentication/auth_service.dart';
 
-class AuthForm extends StatefulWidget {     //This Has been reused from my previous project (Hang out) which I have modified.
+class AuthForm extends StatefulWidget {
+  //This Has been reused from my previous project (Hang out) which I have modified.
   const AuthForm({
     super.key,
     required this.submitLabel,
+    this.emailFieldLabel = 'Email',
     required this.usernameValidator,
     required this.passwordValidator,
     required this.onSubmit,
@@ -12,9 +14,10 @@ class AuthForm extends StatefulWidget {     //This Has been reused from my previ
   });
 
   final String submitLabel;
+  final String emailFieldLabel;
   final FormFieldValidator<String> usernameValidator;
   final FormFieldValidator<String> passwordValidator;
-  final Future<void> Function(String username, String password) onSubmit;
+  final Future<void> Function(String email, String password) onSubmit;
   final Widget footer;
 
   @override
@@ -23,14 +26,14 @@ class AuthForm extends StatefulWidget {     //This Has been reused from my previ
 
 class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   String? _errorMessage;
   bool _isSubmitting = false;
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -45,7 +48,7 @@ class _AuthFormState extends State<AuthForm> {
 
     try {
       await widget.onSubmit(
-        _usernameController.text.trim(),
+        _emailController.text.trim(),
         _passwordController.text,
       );
     } catch (error) {
@@ -69,8 +72,10 @@ class _AuthFormState extends State<AuthForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextFormField(
-              controller: _usernameController,
-              decoration: const InputDecoration(labelText: 'Username'),
+              controller: _emailController,
+              decoration: InputDecoration(labelText: widget.emailFieldLabel),
+              keyboardType: TextInputType.emailAddress,
+              autocorrect: false,
               textInputAction: TextInputAction.next,
               validator: widget.usernameValidator,
               enabled: !_isSubmitting,

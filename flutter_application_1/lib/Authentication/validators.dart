@@ -1,39 +1,30 @@
 /// checks shared by the Login and Signup
 /// each method returns an error message to show under the field, or null when
 /// the value is fine
-class Validators {    //This Has been reused from my previous project (Hang out) which I have modified. 
+class Validators {
+  //This Has been reused from my previous project (Hang out) which I have modified.
   Validators._();
 
-  static final RegExp _usernameChars = RegExp(r'^[A-Za-z0-9_]+$');
+  static final RegExp _email = RegExp(
+    r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9]"
+    r"(?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?"
+    r"(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$",
+  );
+  static const int minPasswordLength = 6;
 
-  static const int minUsernameLength = 3;
-  static const int maxUsernameLength = 20;
-  static const int minPasswordLength = 6; // Firebase's minimum
-
-  /// Log in only checks that something was typed, so an existing account is
-  /// never locked out
-  static String? loginUsername(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Enter your username';
+  static String? loginEmail(String? value) {
+    final email = value?.trim() ?? '';
+    if (email.isEmpty) return 'Enter your email';
+    if (!_email.hasMatch(email)) return 'Enter a valid email address';
     return null;
   }
+
+  static String? signupEmail(String? value) => loginEmail(value);
+  static String? loginUsername(String? value) => loginEmail(value);
+  static String? signupUsername(String? value) => signupEmail(value);
 
   static String? loginPassword(String? value) {
     if (value == null || value.isEmpty) return 'Enter your password';
-    return null;
-  }
-
-  static String? signupUsername(String? value) {
-    final name = value?.trim() ?? '';
-    if (name.isEmpty) return 'Choose a username';
-    if (name.length < minUsernameLength) {
-      return 'Username must be at least $minUsernameLength characters';
-    }
-    if (name.length > maxUsernameLength) {
-      return 'Username must be $maxUsernameLength characters or fewer';
-    }
-    if (!_usernameChars.hasMatch(name)) {
-      return 'Use only letters, numbers and underscores';
-    }
     return null;
   }
 

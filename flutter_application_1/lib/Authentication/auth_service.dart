@@ -1,25 +1,34 @@
-import 'package:cloud_firestore/cloud_firestore.dart';   
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-  //This Has been reused from my previous project (Hang out) which I have modified. 
-class AuthService {        
+
+//This Has been reused from my previous project (Hang out) which I have modified.
+class AuthService {
   final _auth = FirebaseAuth.instance;
   final _db = FirebaseFirestore.instance;
 
-  static String toEmail(String username) =>
-      '${username.trim().toLowerCase()}@myapp.example';
+  static String toEmail(String email) => email.trim().toLowerCase();
 
   Stream<User?> get authState => _auth.authStateChanges();
   User? get currentUser => _auth.currentUser;
 
-  Future<User> signUp(String username, String password) async {
+  Future<User> signInAsGuest() async {
+    // added for guest login features.
+    if (_auth.currentUser?.isAnonymous == true) {
+      return _auth.currentUser!;
+    }
+    final cred = await _auth.signInAnonymously();
+    return cred.user!;
+  }
+
+  Future<User> signUp(String email, String password) async {
     final cred = await _auth.createUserWithEmailAndPassword(
-      email: toEmail(username),
+      email: toEmail(email),
       password: password, // min 6 chars
     );
     final user = cred.user!;
     try {
       await _db.collection('users').doc(user.uid).set({
-        'username': username.trim(),
+        'email': toEmail(email),
         'createdAt': FieldValue.serverTimestamp(),
       });
     } catch (_) {
@@ -31,9 +40,9 @@ class AuthService {
     return user;
   }
 
-  Future<User> logIn(String username, String password) async {
+  Future<User> logIn(String email, String password) async {
     final cred = await _auth.signInWithEmailAndPassword(
-      email: toEmail(username),
+      email: toEmail(email),
       password: password,
     );
     return cred.user!;
@@ -46,15 +55,15 @@ String authErrorMessage(Object error) {
   if (error is FirebaseAuthException) {
     switch (error.code) {
       case 'email-already-in-use':
-        return 'That username is already taken.';
+        return 'That email is already registered.';
       case 'weak-password':
         return 'That password is too weak. Use at least 6 characters.';
       case 'invalid-email':
-        return "That username isn't valid. Use letters, numbers and underscores.";
+        return 'Enter a valid email address.';
       case 'user-not-found':
       case 'wrong-password':
       case 'invalid-credential':
-        return 'Incorrect username or password.';
+        return 'Incorrect email or password.';
       case 'user-disabled':
         return 'This account has been disabled.';
       case 'too-many-requests':

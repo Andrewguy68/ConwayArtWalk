@@ -4,7 +4,8 @@ import 'package:flutter_application_1/Authentication/auth_form.dart';
 import 'package:flutter_application_1/Authentication/auth_scope.dart';
 import 'package:flutter_application_1/Authentication/validators.dart';
 
-class Login extends StatelessWidget {  //This Has been reused from my previous project (Hang out) which I have modified. 
+class Login extends StatelessWidget {
+  //This Has been reused from my previous project (Hang out) which I have modified.
   const Login({super.key});
 
   @override
@@ -23,10 +24,11 @@ class Login extends StatelessWidget {  //This Has been reused from my previous p
           padding: const EdgeInsets.all(24.0),
           child: AuthForm(
             submitLabel: 'Log In',
-            usernameValidator: Validators.loginUsername,
+            emailFieldLabel: 'Email',
+            usernameValidator: Validators.loginEmail,
             passwordValidator: Validators.loginPassword,
-            onSubmit: (username, password) =>
-                AuthScope.of(context).logIn(username, password),
+            onSubmit: (email, password) =>
+                AuthScope.of(context).logIn(email, password),
             footer: TextButton(
               onPressed: () {
                 Navigator.of(
@@ -61,10 +63,11 @@ class Signup extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: AuthForm(
             submitLabel: 'Sign Up',
-            usernameValidator: Validators.signupUsername,
+            emailFieldLabel: 'Email',
+            usernameValidator: Validators.signupEmail,
             passwordValidator: Validators.signupPassword,
-            onSubmit: (username, password) async {
-              await AuthScope.of(context).signUp(username, password);
+            onSubmit: (email, password) async {
+              await AuthScope.of(context).signUp(email, password);
               if (!context.mounted) return;
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
