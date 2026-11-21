@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/color_scheme.dart';
 import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/Widgets/button_setup.dart';
-import 'package:flutter_application_1/Log_In/login_logic.dart';
 import 'package:flutter_application_1/Log_In/signup_page.dart';
+import 'package:flutter_application_1/auth_gate.dart';
 
 class MainMenu extends StatefulWidget {
   const MainMenu({super.key});
@@ -26,14 +26,15 @@ class _MainMenuState extends State<MainMenu> {
         ),
         centerTitle: true,
       ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/ArtWalkLogo-Dark.png', width: 400, height: 400),
             NavStart().buildNavButton(context, 'Map', MapSetup(), colorScheme: Scheme.primary),
-            NavStart().buildNavButton(context, 'Login Page', Login(), colorScheme: Scheme.secondary),
-            NavStart().buildNavButton(context, 'Signup Page', Signup(), colorScheme: Scheme.tertiary),
+            NavStart().buildNavButton(context, 'Login Page', AuthGate(), colorScheme: Scheme.secondary),
+            //NavStart().buildNavButton(context, 'Signup Page', Signup(), colorScheme: Scheme.tertiary),
 
           ],
         ),

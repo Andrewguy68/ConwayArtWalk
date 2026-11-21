@@ -31,7 +31,7 @@ class NavStart {
       onPrimary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary);
       onSecondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.secondary);
       onTertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.tertiary);
-    };
+    }
 
     if (colorScheme == Scheme.tertiary){
       return Padding(
