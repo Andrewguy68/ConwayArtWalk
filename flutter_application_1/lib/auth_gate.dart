@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart' show User;
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Authentication/auth_scope.dart';
+import 'package:flutter_application_1/Artists/artist_home.dart';
 import 'package:flutter_application_1/Log_In/Login.dart';
-import 'package:flutter_application_1/pages/map_page.dart';
 
 /// The map when a user is signed in, Login otherwise. It reacts when the state changes, so a
 /// successful log in / sign up / sign out swaps the page without any manual
@@ -39,7 +39,7 @@ class _AuthGateState extends State<AuthGate> {
             body: Center(child: Text('Unable to check your sign-in status.')),
           );
         }
-        return snapshot.data == null ? const Login() : const MapSetup();
+        return snapshot.data == null ? const Login() : const ArtistPage();
       },
     );
   }

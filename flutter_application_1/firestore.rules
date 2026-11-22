@@ -23,6 +23,15 @@ service cloud.firestore {
       allow read: if isAdmin();
       allow update, delete: if false;
     }
+
+    // users can create only their own basic profile during signup
+    match /users/{uid} {
+      allow create: if request.auth != null
+                    && request.auth.uid == uid
+                    && request.resource.data.keys().hasOnly(['email', 'createdAt'])
+                    && request.resource.data.email is string
+                    && request.resource.data.createdAt == request.time;
+    }
   }
 }
 
