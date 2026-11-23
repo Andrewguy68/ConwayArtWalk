@@ -23,11 +23,11 @@ class _EventPageState extends State<EventPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), closePopupFirst: true, colorScheme: Scheme.primary),
-              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
-              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), closePopupFirst: true, colorScheme: Scheme.tertiary),
-              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), closePopupFirst: true, colorScheme: Scheme.secondary),
-              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), closePopupFirst: true, colorScheme: Scheme.tertiary),
+              NavStart().buildNavButton(dialogContext, 'Map!', MapSetup(), Icons.map_outlined, closePopupFirst: true, colorScheme: Scheme.primary),
+              NavStart().buildNavButton(dialogContext, 'Event List!', EventPage(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.secondary),
+              NavStart().buildNavButton(dialogContext, 'About Page!', AboutPage(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.tertiary),
+              NavStart().buildNavButton(dialogContext, 'Stamps!', StampPage(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.secondary),
+              NavStart().buildNavButton(dialogContext, 'Back to Menu!', MainMenu(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.tertiary),
             ],
           ),
         ),
