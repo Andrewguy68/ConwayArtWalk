@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/models/pin.dart';
+import 'package:flutter_application_1/models/about_info.dart';
 
 // reading from firestore will happen here
 // our screens will use this instead of firestore directly
@@ -21,5 +22,20 @@ class FirestoreService {
       }
     }
     return pins;
+  }
+
+  // reads the about page info from config/about
+  // if the doc is missing or cant be read, the defaults are used
+  Future<AboutInfo> getAboutInfo() async {
+    try {
+      final doc = await db.collection('config').doc('about').get();
+      final data = doc.data();
+      if (data == null) return AboutInfo.defaults;
+      return AboutInfo.fromMap(data);
+    }
+    catch (e) {
+      debugPrint('Could not load about info: $e');
+      return AboutInfo.defaults;
+    }
   }
 }
