@@ -41,6 +41,66 @@ class _AboutPageState extends State<AboutPage> {
     );
   }
 
+
+  // loads the about info from firestore once when the page opens
+  late final Future<AboutInfo> _aboutFuture = FirestoreService().getAboutInfo();
+
+  // opens a link, email, or phone number outside the app
+  Future<void> _open(String url) async {
+    final uri = Uri.tryParse(url);
+    // only web links, email, and phone numbers are allowed
+    final allowed = uri != null && ['https', 'mailto', 'tel'].contains(uri.scheme);
+    var opened = false;
+    if (allowed) {
+      try {
+        opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      }
+      catch (_) {}
+    }
+    if (!opened && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open that link.', style: Theme.of(context).textTheme.bodyLarge)),
+      );
+    }
+  }
+
+  // keeps only the numbers so (501) 232-1133 works as a phone link
+  String _digits(String phone) => phone.replaceAll(RegExp(r'[^0-9+]'), '');
+
+  // colored section label (Geronide), same as the events page
+  Widget _section(String name, Color color, {Color textColor = Colors.white}) {
+    return Container(
+      margin: const EdgeInsets.only(top: 24, bottom: 4),
+      padding: const EdgeInsets.fromLTRB(24, 10, 28, 10),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.horizontal(right: Radius.circular(28)),
+      ),
+      child: Text(
+        name.toUpperCase(),
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          fontSize: 20,
+          fontWeight: FontWeight.normal,
+          color: textColor,
+        ),
+      ),
+    );
+  }
+
+  // paragraph text (Sanchez)
+  Widget _text(String text) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 8, 24, 4),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: Colors.white,
+          height: 1.4,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
