@@ -150,7 +150,7 @@ void _showPinDetails(Pin pin) {
     };
     const labelColors = {
       'booth': Colors.red,
-      'music': Color.fromARGB(255, 122, 67, 216),
+      'music': Color.fromARGB(255, 166, 67, 216),
     };
     return Wrap(
       spacing: 8,
