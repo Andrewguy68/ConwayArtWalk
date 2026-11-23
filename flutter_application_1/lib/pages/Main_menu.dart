@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Widgets/button_setup.dart';
+import 'package:flutter_application_1/models/color_scheme.dart';
+import 'package:flutter_application_1/pages/about_page.dart';
+import 'package:flutter_application_1/pages/event_page.dart';
 import 'package:flutter_application_1/pages/map_page.dart';
 import 'package:flutter_application_1/auth_gate.dart';
 import 'package:flutter_application_1/Authentication/auth_scope.dart';
 import 'package:flutter_application_1/Authentication/auth_service.dart';
+import 'package:flutter_application_1/pages/stamp_page.dart';
 
 class MainMenu extends StatefulWidget { //sets up the main menu page!
   const MainMenu({super.key});
@@ -63,6 +68,24 @@ class _MainMenuState extends State<MainMenu> {
     }
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          ElevatedButton(
+            key: const Key('Login Page'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: primary,
+              iconColor:iconColor,
+            ),
+            onPressed: _openLogin,
+            child: Row(
+              spacing: 10,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.account_circle),
+                Text('Login', style: Theme.of(context).textTheme.bodyLarge)
+              ],
+            ),
+          ),
+        ],
         title: Text(
           'Main Menu!',
           textAlign: TextAlign.center,
@@ -101,25 +124,9 @@ class _MainMenuState extends State<MainMenu> {
                       ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ElevatedButton(
-                key: const Key('Login Page'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: secondary,
-                  iconColor:iconColor,
-                ),
-                onPressed: _openLogin,
-                child: Row(
-                  spacing: 10,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.account_circle),
-                    Text('Login', style: Theme.of(context).textTheme.bodyLarge)
-                  ],
-                ),
-              ),
-            ),
+            NavStart().buildNavButton(context, 'Event List!', EventPage(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.secondary),
+            NavStart().buildNavButton(context, 'About Page!', AboutPage(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.tertiary),
+            NavStart().buildNavButton(context, 'Stamps!', StampPage(), Icons.abc, closePopupFirst: true, colorScheme: Scheme.secondary),
           ],
         ),
       ),
