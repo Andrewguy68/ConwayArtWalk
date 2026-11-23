@@ -5,6 +5,9 @@ import 'package:flutter_application_1/Widgets/button_setup.dart';
 import 'package:flutter_application_1/pages/event_page.dart';
 import 'package:flutter_application_1/pages/Main_menu.dart';
 import 'package:flutter_application_1/pages/stamp_page.dart';
+import 'package:flutter_application_1/models/about_info.dart';
+import 'package:flutter_application_1/firestore_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -100,6 +103,51 @@ class _AboutPageState extends State<AboutPage> {
       ),
     );
   }
+  // an icon with a line of info, that isnt appable
+  Widget _info(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 6, 24, 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 22, color: Colors.white),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // an icon with a tappable line that opens the link
+  Widget _link(IconData icon, String label, String url) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 12),
+      child: TextButton.icon(
+        style: TextButton.styleFrom(foregroundColor: Colors.white),
+        onPressed: () => _open(url),
+        icon: Icon(icon, size: 22),
+        label: Text(
+          label,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  // a text button that opens a social page, same look as the survey button on the map
+  Widget _socialButton(String label, String url) {
+    return TextButton(
+      style: TextButton.styleFrom(foregroundColor: Colors.white),
+      onPressed: () => _open(url),
+      child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -138,8 +186,40 @@ class _AboutPageState extends State<AboutPage> {
                   Center(child: Image.asset('assets/ArtWalkLogo-Dark.png', height: 160)),
                   Center(
                     child: Text(
-                      'About the Conway Art Walk!', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,
+                      'About the Conway Art Walk!', style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white), textAlign: TextAlign.center,
                     ),
+                  ),
+
+                  // shows the defaults right away, then the firestore info once it loads
+                  FutureBuilder<AboutInfo>(
+                    future: _aboutFuture,
+                    builder: (context, snapshot) {
+                      final info = snapshot.data ?? AboutInfo.defaults;
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _section('Who We Are', const Color(0xFF627d4e)),
+                          _text(info.blurb),
+
+                          _section('Contact Us', const Color(0xFF63a6f2), textColor: Colors.black),
+                          _info(Icons.place, info.address),
+                          _info(Icons.access_time, info.hours),
+                          _link(Icons.email, info.email, 'mailto:${info.email}'),
+                          _link(Icons.phone, info.phone, 'tel:${_digits(info.phone)}'),
+
+                          _section('Follow Us', const Color(0xFFffb809), textColor: Colors.black),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Row(
+                              children: [
+                                _socialButton('Instagram', info.instagram),
+                                _socialButton('Facebook', info.facebook),
+                                ],
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
