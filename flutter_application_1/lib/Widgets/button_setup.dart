@@ -76,12 +76,16 @@ class NavStart {
           );
         },
         key: Key(label),
-        child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+        child: Row(
+          children: [
+            Icon(icon),
+            Text(label, style: Theme.of(context).textTheme.bodyLarge)
+          ],
+        ),
       ),
     );
     }else{
       // Builds a navigation button widget which creates all of the needed elevated buttons for this code.
-      var style = Theme.of(context).textTheme.bodyLarge;
       //WidgetStatePropertyAll<TextStyle>(TextStyle(color: Theme.of(context).colorScheme.onPrimary));
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -99,7 +103,12 @@ class NavStart {
             );
           },
           key: Key(label),
-          child: Text(label, style: style),
+          child: Row(
+          children: [
+            Icon(icon),
+            Text(label, style: Theme.of(context).textTheme.bodyLarge)
+          ],
+        ),
         ),
       );
     }
