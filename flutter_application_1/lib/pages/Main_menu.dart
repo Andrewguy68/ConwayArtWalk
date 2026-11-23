@@ -4,7 +4,7 @@ import 'package:flutter_application_1/auth_gate.dart';
 import 'package:flutter_application_1/Authentication/auth_scope.dart';
 import 'package:flutter_application_1/Authentication/auth_service.dart';
 
-class MainMenu extends StatefulWidget {
+class MainMenu extends StatefulWidget { //sets up the main menu page!
   const MainMenu({super.key});
 
   @override
