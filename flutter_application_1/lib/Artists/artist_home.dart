@@ -60,12 +60,18 @@ class _ArtistPageState extends State<ArtistPage> {
               width: 400,
               height: 400,
             ),
+            const SizedBox(height: 24),
             Text(
               'Welcome to the Artist Page! Here you can manage your profile, check in to your booth, and communicate any issues or questions you have!',
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
+            const SizedBox(height: 24),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+              ),
               onPressed: () {
                 // Navigate to the profile management page
                 Navigator.push(
@@ -75,7 +81,12 @@ class _ArtistPageState extends State<ArtistPage> {
               },
               child: const Text('Manage Profile'),
             ),
+            const SizedBox(height: 24),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+                foregroundColor: Theme.of(context).colorScheme.onSecondary,
+              ),
               onPressed: () {
                 // Navigate to the event page
                 Navigator.push(

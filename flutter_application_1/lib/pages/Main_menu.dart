@@ -4,7 +4,7 @@ import 'package:flutter_application_1/auth_gate.dart';
 import 'package:flutter_application_1/Authentication/auth_scope.dart';
 import 'package:flutter_application_1/Authentication/auth_service.dart';
 
-class MainMenu extends StatefulWidget {
+class MainMenu extends StatefulWidget { //sets up the main menu page!
   const MainMenu({super.key});
 
   @override
@@ -45,6 +45,22 @@ class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     //builds the main menu widget
+    Brightness mode = MediaQuery.platformBrightnessOf(context);
+    Color primary;
+    Color secondary;
+    Color tertiary;
+    Color iconColor;
+    if (mode == Brightness.light){
+      primary = Theme.of(context).colorScheme.primary;
+      secondary = Theme.of(context).colorScheme.secondary;
+      tertiary = Theme.of(context).colorScheme.tertiary;
+      iconColor = Colors.black;
+    }else{
+      primary = Theme.of(context).colorScheme.onPrimary;
+      secondary = Theme.of(context).colorScheme.onSecondary;
+      tertiary = Theme.of(context).colorScheme.onTertiary;
+      iconColor = Colors.white;
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -65,8 +81,8 @@ class _MainMenuState extends State<MainMenu> {
               child: ElevatedButton(
                 key: const Key('Map'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  backgroundColor: primary,
+                  iconColor:iconColor,
                 ),
                 onPressed: _OpenMap ? null : _openMapAsGuest,
                 child: _OpenMap
@@ -75,7 +91,14 @@ class _MainMenuState extends State<MainMenu> {
                         height: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Text('Map'),
+                    : Row(
+                        spacing: 10,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.map_outlined),
+                          Text('Map', style: Theme.of(context).textTheme.bodyLarge)
+                        ],
+                      ),
               ),
             ),
             Padding(
@@ -83,11 +106,18 @@ class _MainMenuState extends State<MainMenu> {
               child: ElevatedButton(
                 key: const Key('Login Page'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
-                  foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                  backgroundColor: secondary,
+                  iconColor:iconColor,
                 ),
                 onPressed: _openLogin,
-                child: const Text('Login'),
+                child: Row(
+                  spacing: 10,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.account_circle),
+                    Text('Login', style: Theme.of(context).textTheme.bodyLarge)
+                  ],
+                ),
               ),
             ),
           ],

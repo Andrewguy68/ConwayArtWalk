@@ -17,6 +17,7 @@ class NavStart {
     WidgetStatePropertyAll<Color> onPrimary;
     WidgetStatePropertyAll<Color> onSecondary;
     WidgetStatePropertyAll<Color> onTertiary;
+    WidgetStatePropertyAll<Color> iconColor;
     
     if (mode == Brightness.light){
       primary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary);
@@ -25,6 +26,7 @@ class NavStart {
       onPrimary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onPrimary);
       onSecondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onSecondary);
       onTertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onTertiary);
+      iconColor = WidgetStatePropertyAll<Color>(Colors.black);
     }else{
       primary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onPrimary);
       secondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.onSecondary);
@@ -32,6 +34,7 @@ class NavStart {
       onPrimary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.primary);
       onSecondary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.secondary);
       onTertiary = WidgetStatePropertyAll<Color>(Theme.of(context).colorScheme.tertiary);
+      iconColor = WidgetStatePropertyAll<Color>(Colors.white);
     }
 
     if (colorScheme == Scheme.tertiary){
@@ -41,6 +44,7 @@ class NavStart {
         style: ButtonStyle(
           backgroundColor: tertiary,
           foregroundColor: onTertiary,
+          iconColor: iconColor,
         ),
         onPressed: () {
           // grab the navigator before the pop up closes
@@ -52,6 +56,8 @@ class NavStart {
         },
         key: Key(label),
         child: Row(
+          spacing: 10,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(icon),
             Text(label, style: Theme.of(context).textTheme.bodyLarge)
@@ -66,6 +72,7 @@ class NavStart {
         style: ButtonStyle(
           backgroundColor: secondary,
           foregroundColor: onSecondary,
+          iconColor: iconColor,
         ),
         onPressed: () {
           // grab the navigator before the pop up closes
@@ -76,19 +83,25 @@ class NavStart {
           );
         },
         key: Key(label),
-        child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+        child: Row(
+          spacing: 10,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon),
+            Text(label, style: Theme.of(context).textTheme.bodyLarge)
+          ],
+        ),
       ),
     );
     }else{
       // Builds a navigation button widget which creates all of the needed elevated buttons for this code.
-      var style = Theme.of(context).textTheme.bodyLarge;
-      //WidgetStatePropertyAll<TextStyle>(TextStyle(color: Theme.of(context).colorScheme.onPrimary));
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor: primary,
             foregroundColor: onPrimary,
+            iconColor: iconColor,
           ),
           onPressed: () {
             // grab the navigator before the pop up closes
@@ -99,7 +112,14 @@ class NavStart {
             );
           },
           key: Key(label),
-          child: Text(label, style: style),
+          child: Row(
+            spacing: 10,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon),
+              Text(label, style: Theme.of(context).textTheme.bodyLarge)
+            ],
+          ),
         ),
       );
     }
