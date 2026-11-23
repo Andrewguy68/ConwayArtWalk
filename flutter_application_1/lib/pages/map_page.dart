@@ -148,12 +148,18 @@ void _showPinDetails(Pin pin) {
       'music': 'Music',
       // 'accessibility': 'Accessibility',
     };
+    const labelColors = {
+      'booth': Colors.red,
+      'music': Color.fromARGB(255, 122, 67, 216),
+    };
     return Wrap(
       spacing: 8,
       children: [
         for (final entry in labels.entries)
           FilterChip(
             label: Text(entry.value, style: Theme.of(context).textTheme.bodyLarge),
+            backgroundColor: labelColors[entry.key],
+            selectedColor: labelColors[entry.key],
             selected: _visibleTypes.contains(entry.key),
             onSelected: (isOn) {
               setState(() {
