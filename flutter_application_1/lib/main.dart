@@ -50,6 +50,10 @@ class MyApp extends StatelessWidget {
       ),
       bodyLarge: const TextStyle(fontFamily: 'Geronide', fontSize: 18),
       bodyMedium: const TextStyle(fontFamily: 'Sanchez', fontSize: 16),
+      bodySmall: const TextStyle(fontFamily: 'Sanchez', fontSize: 15),
+      labelLarge: const TextStyle(fontFamily: 'Sanchez', fontSize: 18),
+      labelMedium: const TextStyle(fontFamily: 'Sanchez', fontSize: 16),
+      labelSmall: const TextStyle(fontFamily: 'Sanchez', fontSize: 15),
     );
     return AuthScope(   // changed this to handle the login stuff.
       service: AuthService(),

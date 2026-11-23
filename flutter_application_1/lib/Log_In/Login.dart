@@ -30,6 +30,9 @@ class Login extends StatelessWidget {
             onSubmit: (email, password) =>
                 AuthScope.of(context).logIn(email, password),
             footer: TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.bodySmall,
+              ),
               onPressed: () {
                 Navigator.of(
                   context,
@@ -72,6 +75,9 @@ class Signup extends StatelessWidget {
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
             footer: TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.bodySmall,
+              ),
               onPressed: () => Navigator.of(context).pop(),
               child: const Text('Back to login'),
             ),
